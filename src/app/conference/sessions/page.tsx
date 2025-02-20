@@ -1,20 +1,6 @@
 import Link from "next/link";
 import React from "react";
-
-interface Speaker {
-  id: string;
-  name: string;
-}
-
-interface Session {
-  id: string;
-  title: string;
-  description: string;
-  room: string;
-  day: string;
-  track: string;
-  speakers: Speaker[];
-}
+import { Session } from "@/types/conference";
 
 async function getSessions(): Promise<{ sessions: Session[] }> {
   const response = await fetch(

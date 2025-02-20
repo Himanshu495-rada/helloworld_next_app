@@ -1,12 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import styles from "../conference.module.css";
-
-interface Speaker {
-  id: string;
-  name: string;
-  bio: string;
-}
+import { Speaker } from "@/types/conference";
 
 async function getSpeakers(): Promise<{ speakers: Speaker[] }> {
   const response = await fetch(
@@ -27,7 +22,10 @@ export default async function page() {
       <h1>Welcome Speakers page</h1>
       {data.speakers.map(({ id, name, bio }: Speaker) => (
         <div key={id}>
-          <h3>{name}</h3>
+          <Link href={`/conference/speakers/${btoa(id)}`}>
+            <h3>{name}</h3>
+          </Link>
+
           <h5>{bio}</h5>
         </div>
       ))}
