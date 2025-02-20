@@ -10,8 +10,7 @@ interface Speaker {
 
 async function getSpeakers(): Promise<{ speakers: Speaker[] }> {
   const response = await fetch(
-    "https://raw.githubusercontent.com/adhithiravi/Consuming-GraphqL-Apollo/refs/heads/master/api/data/speakers.json",
-    { next: { revalidate: 10 } }
+    "https://raw.githubusercontent.com/adhithiravi/Consuming-GraphqL-Apollo/refs/heads/master/api/data/speakers.json"
   );
   const data = await response.json();
   return data;
