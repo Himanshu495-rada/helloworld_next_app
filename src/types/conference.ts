@@ -4,9 +4,7 @@ export interface Speaker {
   bio: string;
   sessions: Session[];
 }
-export interface PageProps {
-  slug: string;
-}
+
 export interface Session {
   id: string;
   title: string;

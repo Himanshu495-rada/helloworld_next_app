@@ -1,5 +1,5 @@
 import React from "react";
-import { PageProps, Speaker } from "@/types/conference";
+import { Speaker } from "@/types/conference";
 
 async function getSpeakersinfo(slug: string): Promise<Speaker> {
   const response = await fetch(
@@ -20,7 +20,7 @@ function getSpeakerDetails(speakers: Speaker[], speakerId: string) {
   return speaker;
 }
 
-export default async function page({ params }: { params: PageProps }) {
+export default async function Page({ params }) {
   const { slug } = params;
   const speakerInfo = await getSpeakersinfo(slug);
   const { name, bio, sessions } = speakerInfo;
@@ -29,9 +29,9 @@ export default async function page({ params }: { params: PageProps }) {
       <h3>{name}</h3>
       <h5>About: {bio}</h5>
       {sessions &&
-        sessions.map(({ name, id }) => (
+        sessions.map(({ title, id }) => (
           <div key={id}>
-            <h5>Session: {name}</h5>
+            <h5>Session: {title}</h5>
           </div>
         ))}
     </div>
